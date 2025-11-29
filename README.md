@@ -95,6 +95,45 @@ On supported browsers, you can install the app:
 - **Safari iOS**: Tap Share → Add to Home Screen
 - **Firefox Android**: Tap the menu → Install
 
+## Deployment
+
+### CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment. The workflow:
+
+1. **Build**: Builds both the React frontend and .NET backend
+2. **Deploy**: Deploys to Azure App Service (on push to `main`)
+
+### Deploying to Azure App Service (Free Tier)
+
+1. **Create an Azure App Service**:
+   - Go to [Azure Portal](https://portal.azure.com)
+   - Create a new Web App with:
+     - Runtime: .NET 10
+     - OS: Linux
+     - Pricing: Free (F1) tier
+   - Name your app (e.g., `checkers-signalr`)
+
+2. **Configure GitHub Secrets**:
+   - In your Azure App Service, go to **Deployment Center** > **Manage publish profile**
+   - Download the publish profile
+   - In GitHub, go to **Settings** > **Secrets and variables** > **Actions**
+   - Create a secret named `AZURE_WEBAPP_PUBLISH_PROFILE` with the publish profile contents
+
+3. **Update the workflow**:
+   - Edit `.github/workflows/deploy.yml`
+   - Update `AZURE_WEBAPP_NAME` to match your Azure App Service name
+
+4. **Deploy**:
+   - Push to `main` branch to trigger deployment
+   - Or manually trigger via **Actions** > **Build and Deploy** > **Run workflow**
+
+### Alternative Free Hosting Options
+
+- **Render**: Supports Docker containers, has a free tier with sleep on inactivity
+- **Railway**: Offers a free tier with limited hours per month
+- **Fly.io**: Free allowance for small apps
+
 ## License
 
 MIT License
