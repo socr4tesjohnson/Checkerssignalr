@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# GitHub
+.github
+
+# Node
+client/node_modules
+client/dist
+**/node_modules
+
+# .NET
+**/bin
+**/obj
+**/*.user
+**/*.suo
+**/*.cache
+**/publish
+
+# IDE
+.vscode
+.vs
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs
+
+# Documentation
+*.md
+LICENSE
+
+# Environment
+.env
+.env.local
