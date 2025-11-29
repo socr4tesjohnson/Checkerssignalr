@@ -1,0 +1,157 @@
+.checker-board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.player-info.active {
+  background-color: #e0ffe0;
+  font-weight: bold;
+}
+
+.player-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.player-dot.red {
+  background-color: #dc3545;
+}
+
+.player-dot.black {
+  background-color: #333;
+}
+
+.you-badge {
+  background-color: #007bff;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  margin-left: 4px;
+}
+
+.turn-indicator {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+.checker-board {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #5c4033;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.board-row {
+  display: flex;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square.light {
+  background-color: #f0d9b5;
+}
+
+.square.dark {
+  background-color: #b58863;
+}
+
+.square.interactive {
+  cursor: pointer;
+}
+
+.square.selected {
+  background-color: #90ee90 !important;
+  box-shadow: inset 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+.piece {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s;
+}
+
+.piece:hover {
+  transform: scale(1.05);
+}
+
+.piece.red {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #dc3545);
+  border: 2px solid #a52a2a;
+}
+
+.piece.black {
+  background: radial-gradient(circle at 30% 30%, #555, #222);
+  border: 2px solid #111;
+}
+
+.piece.king {
+  box-shadow: 0 0 10px 2px gold, 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.crown {
+  color: gold;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 480px) {
+  .square {
+    width: 40px;
+    height: 40px;
+  }
+
+  .piece {
+    width: 32px;
+    height: 32px;
+  }
+
+  .crown {
+    font-size: 1rem;
+  }
+
+  .game-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .player-info {
+    font-size: 0.9rem;
+  }
+}
