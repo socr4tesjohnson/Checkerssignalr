@@ -12,14 +12,25 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins(
-                "http://localhost:3000",
-                "http://localhost:5173",
-                "https://localhost:3000",
-                "https://localhost:5173")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+        if (builder.Environment.IsDevelopment())
+        {
+            policy.WithOrigins(
+                    "http://localhost:3000",
+                    "http://localhost:5173",
+                    "https://localhost:3000",
+                    "https://localhost:5173")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        }
+        else
+        {
+            // In production, allow same-origin and any configured origins
+            policy.SetIsOriginAllowed(_ => true)
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        }
     });
 });
 
